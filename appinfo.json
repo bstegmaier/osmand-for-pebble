@@ -1,0 +1,51 @@
+{
+    "appKeys": {},
+    "capabilities": [
+        ""
+    ],
+    "companyName": "pebble@bstegmaier.de",
+    "longName": "OsmAndPebble",
+    "projectType": "native",
+    "resources": {
+        "media": [
+            {
+                "file": "images/alert_generic.png",
+                "memoryFormat": "Smallest",
+                "name": "ALERT_GENERIC",
+                "storageFormat": "png",
+                "targetPlatforms": null,
+                "type": "bitmap"
+            },
+            {
+                "file": "images/icon.png",
+                "name": "ICON",
+                "targetPlatforms": null,
+                "type": "png-trans"
+            },
+            {
+                "file": "data/turn_slightly_right.pdc",
+                "name": "TURN_SLIGHTLY_RIGHT",
+                "targetPlatforms": null,
+                "type": "raw"
+            },
+            {
+                "file": "data/turn_left.pdc",
+                "name": "TURN_LEFT",
+                "targetPlatforms": null,
+                "type": "raw"
+            }
+        ]
+    },
+    "sdkVersion": "3",
+    "shortName": "OsmAndPebble",
+    "targetPlatforms": [
+        "aplite",
+        "basalt",
+        "chalk"
+    ],
+    "uuid": "5f2386f3-066e-4e40-acb6-38a7dd1c019c",
+    "versionLabel": "1.0",
+    "watchapp": {
+        "watchface": false
+    }
+}
