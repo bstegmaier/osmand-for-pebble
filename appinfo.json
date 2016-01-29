@@ -23,14 +23,56 @@
                 "type": "png-trans"
             },
             {
-                "file": "data/turn_slightly_right.pdc",
-                "name": "TURN_SLIGHTLY_RIGHT",
+                "file": "data/directions/go_straight.pdc",
+                "name": "DIRECTIONS_GO_STRAIGHT",
                 "targetPlatforms": null,
                 "type": "raw"
             },
             {
-                "file": "data/turn_left.pdc",
-                "name": "TURN_LEFT",
+                "file": "data/directions/keep_left.pdc",
+                "name": "DIRECTIONS_KEEP_LEFT",
+                "targetPlatforms": null,
+                "type": "raw"
+            },
+            {
+                "file": "data/directions/keep_right.pdc",
+                "name": "DIRECTIONS_KEEP_RIGHT",
+                "targetPlatforms": null,
+                "type": "raw"
+            },
+            {
+                "file": "data/directions/turn_left.pdc",
+                "name": "DIRECTIONS_TURN_LEFT",
+                "targetPlatforms": null,
+                "type": "raw"
+            },
+            {
+                "file": "data/directions/turn_right.pdc",
+                "name": "DIRECTIONS_TURN_RIGHT",
+                "targetPlatforms": null,
+                "type": "raw"
+            },
+            {
+                "file": "data/directions/turn_sharply_left.pdc",
+                "name": "DIRECTIONS_TURN_SHARPLY_LEFT",
+                "targetPlatforms": null,
+                "type": "raw"
+            },
+            {
+                "file": "data/directions/turn_sharply_right.pdc",
+                "name": "DIRECTIONS_TURN_SHARPLY_RIGHT",
+                "targetPlatforms": null,
+                "type": "raw"
+            },
+            {
+                "file": "data/directions/turn_slightly_left.pdc",
+                "name": "DIRECTIONS_TURN_SLIGHTLY_LEFT",
+                "targetPlatforms": null,
+                "type": "raw"
+            },
+            {
+                "file": "data/directions/turn_slightly_right.pdc",
+                "name": "DIRECTIONS_TURN_SLIGHTLY_RIGHT",
                 "targetPlatforms": null,
                 "type": "raw"
             }
