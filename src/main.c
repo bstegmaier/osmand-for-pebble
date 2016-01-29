@@ -2,6 +2,7 @@
 #include "alert_window.h"
 #include "directions_window.h"
 #include "navigation_info_window.h"
+#include "constants.h"
 
 static Window *s_main_window;
 static StatusBarLayer *s_statusbar_layer;
@@ -34,6 +35,53 @@ static void main_window_click_config_provider(void *context) {
   window_single_click_subscribe(BUTTON_ID_DOWN, down_click_handler);
 }
 
+static void alert_message_handler(DictionaryIterator *iterator, void *context) {
+  Tuple *alert_text = dict_find(iterator, ALERT_TEXT);
+  Tuple *alert_type = dict_find(iterator, ALERT_TYPE);
+  // pushing an existing window again with modified content would lead to a segfault upon deinit
+  hide_alert_window();
+  show_alert_window(alert_type->value->int16, alert_text->value->cstring);
+}
+
+static void navigation_info_message_handler(DictionaryIterator *iterator, void *context) {
+  Tuple *destination = dict_find(iterator, NAVIGATION_DESTINATION);
+  Tuple *distance = dict_find(iterator, NAVIGATION_DIST_TO_DEST);
+  Tuple *eta = dict_find(iterator, NAVIGATION_ETA);
+  
+  /*
+  if (destination) navigation_info_window_update_destination(destination->value->cstring);
+  if (distance)    navigation_info_window_update_distance(distance->value->XXX);
+  if (eta)         navigation_info_window_update_eta(eta->value->XXX);
+  */
+  
+  show_navigation_info_window("Via della Valéta", 142, time(NULL));
+}
+
+static void instruction_message_handler(DictionaryIterator *iterator, void *context) {
+  Tuple *instruction_type = dict_find(iterator, INSTRUCTION_TYPE);
+  Tuple *distance = dict_find(iterator, INSTRUCTION_DISTANCE);
+  Tuple *text = dict_find(iterator, INSTRUCTION_TEXT);
+  hide_directions_window();
+  show_directions_window(RESOURCE_ID_TURN_SLIGHTLY_RIGHT /*instruction_type->value->uint8*/, distance->value->uint16, text->value->cstring);
+  // show_directions_window(RESOURCE_ID_TURN_SLIGHTLY_RIGHT, 200, "Via della Valéta");
+}
+
+static void message_received_handler(DictionaryIterator *iterator, void *context) {
+  Tuple *message_type = dict_find(iterator, MESSAGE_TYPE);
+  if(!message_type) {
+    APP_LOG(APP_LOG_LEVEL_WARNING, "No MESSAGE_TYPE received.");
+    return;
+  }
+  
+  switch(message_type->value->int16) {
+    case ALERT_MESSAGE:           alert_message_handler(iterator, context); break;
+    case NAVIGATION_INFO_MESSAGE: navigation_info_message_handler(iterator, context); break;
+    case INSTRUCTION_MESSAGE:     instruction_message_handler(iterator, context); break;
+    default:
+      APP_LOG(APP_LOG_LEVEL_WARNING, "Unknown message type received.");
+  }
+}
+
 static void main_window_load(Window *window) {
   s_statusbar_layer = status_bar_layer_create();
   status_bar_layer_set_colors(s_statusbar_layer, GColorChromeYellow, GColorBlack);
@@ -57,6 +105,9 @@ static void handle_init(void) {
     .unload = main_window_unload,
   });
   window_stack_push(s_main_window, true);
+  
+  app_message_register_inbox_received(message_received_handler);
+  app_message_open(app_message_inbox_size_maximum(), app_message_outbox_size_maximum());
 }
 
 static void handle_deinit(void) {
