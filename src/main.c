@@ -22,7 +22,7 @@ static void select_click_handler(ClickRecognizerRef recognizer, void *context) {
 }
 
 static void down_click_handler(ClickRecognizerRef recognizer, void *context) {
-  show_directions_window(RESOURCE_ID_TURN_SLIGHTLY_RIGHT, 200, "Via della Valéta");
+  show_directions_window(RESOURCE_ID_DIRECTIONS_TURN_SLIGHTLY_RIGHT, 200, "Via della Valéta");
 }
 
 static void up_click_handler(ClickRecognizerRef recognizer, void *context) {
@@ -61,9 +61,30 @@ static void instruction_message_handler(DictionaryIterator *iterator, void *cont
   Tuple *instruction_type = dict_find(iterator, INSTRUCTION_TYPE);
   Tuple *distance = dict_find(iterator, INSTRUCTION_DISTANCE);
   Tuple *text = dict_find(iterator, INSTRUCTION_TEXT);
+  
+  uint32_t instruction_canvas_resource = RESOURCE_ID_DIRECTIONS_GO_STRAIGHT;
+  switch(instruction_type->value->uint16) {
+    case GO_STRAIGHT_INSTRUCTION:
+      instruction_canvas_resource = RESOURCE_ID_DIRECTIONS_GO_STRAIGHT; break;
+    case KEEP_LEFT_INSTRUCTION:
+      instruction_canvas_resource = RESOURCE_ID_DIRECTIONS_KEEP_LEFT; break;
+    case KEEP_RIGHT_INSTRUCTION:
+      instruction_canvas_resource = RESOURCE_ID_DIRECTIONS_KEEP_RIGHT; break;
+    case TURN_LEFT_INSTRUCTION:
+      instruction_canvas_resource = RESOURCE_ID_DIRECTIONS_TURN_LEFT; break;
+    case TURN_RIGHT_INSTRUCTION:
+      instruction_canvas_resource = RESOURCE_ID_DIRECTIONS_TURN_RIGHT; break;
+    case TURN_SHARPLY_LEFT_INSTRUCTION:
+      instruction_canvas_resource = RESOURCE_ID_DIRECTIONS_TURN_SHARPLY_LEFT; break;
+    case TURN_SHARPLY_RIGHT_INSTRUCTION:
+      instruction_canvas_resource = RESOURCE_ID_DIRECTIONS_TURN_SHARPLY_RIGHT; break;
+    case TURN_SLIGHTLY_LEFT_INSTRUCTION:
+      instruction_canvas_resource = RESOURCE_ID_DIRECTIONS_TURN_SLIGHTLY_LEFT; break;
+    case TURN_SLIGHTLY_RIGHT_INSTRUCTION:
+      instruction_canvas_resource = RESOURCE_ID_DIRECTIONS_TURN_SLIGHTLY_RIGHT; break;
+  }
   hide_directions_window();
-  show_directions_window(RESOURCE_ID_TURN_SLIGHTLY_RIGHT /*instruction_type->value->uint8*/, distance->value->uint16, text->value->cstring);
-  // show_directions_window(RESOURCE_ID_TURN_SLIGHTLY_RIGHT, 200, "Via della Valéta");
+  show_directions_window(instruction_canvas_resource, distance->value->uint16, text->value->cstring);
 }
 
 static void message_received_handler(DictionaryIterator *iterator, void *context) {
