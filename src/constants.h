@@ -1,3 +1,10 @@
+/* configuration */
+
+#define CONFIG_BACKLIGHT_ON_MESSAGE 1
+#define CONFIG_VIBRATE_ON_MESSAGE 1
+
+/* app message communication */
+
 #define MESSAGE_TYPE 0
 #define ALERT_MESSAGE 1
 #define NAVIGATION_INFO_MESSAGE 2

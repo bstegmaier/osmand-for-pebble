@@ -38,9 +38,17 @@ static void main_window_click_config_provider(void *context) {
 static void alert_message_handler(DictionaryIterator *iterator, void *context) {
   Tuple *alert_text = dict_find(iterator, ALERT_TEXT);
   Tuple *alert_type = dict_find(iterator, ALERT_TYPE);
-  // pushing an existing window again with modified content would lead to a segfault upon deinit
+
   hide_alert_window();
   show_alert_window(alert_type->value->int16, alert_text->value->cstring);
+  
+  #ifdef CONFIG_VIBRATE_ON_MESSAGE
+    vibes_short_pulse();
+  #endif
+  
+  #ifdef CONFIG_BACKLIGHT_ON_MESSAGE
+    light_enable_interaction();
+  #endif
 }
 
 static void navigation_info_message_handler(DictionaryIterator *iterator, void *context) {
@@ -54,7 +62,16 @@ static void navigation_info_message_handler(DictionaryIterator *iterator, void *
   if (eta)         navigation_info_window_update_eta(eta->value->XXX);
   */
 
+  hide_navigation_info_window();
   show_navigation_info_window("Via della Valéta", 142, time(NULL));
+  
+  #ifdef CONFIG_VIBRATE_ON_MESSAGE
+    vibes_short_pulse();
+  #endif
+  
+  #ifdef CONFIG_BACKLIGHT_ON_MESSAGE
+    light_enable_interaction();
+  #endif
 }
 
 static void instruction_message_handler(DictionaryIterator *iterator, void *context) {
@@ -83,8 +100,17 @@ static void instruction_message_handler(DictionaryIterator *iterator, void *cont
     case TURN_SLIGHTLY_RIGHT_INSTRUCTION:
       instruction_canvas_resource = RESOURCE_ID_TURN_SLIGHTLY_RIGHT_INSTRUCTION; break;
   }
+  
   hide_directions_window();
   show_directions_window(instruction_canvas_resource, distance->value->uint16, text->value->cstring);
+  
+  #ifdef CONFIG_VIBRATE_ON_MESSAGE
+    vibes_short_pulse();
+  #endif
+  
+  #ifdef CONFIG_BACKLIGHT_ON_MESSAGE
+    light_enable_interaction();
+  #endif
 }
 
 static void message_received_handler(DictionaryIterator *iterator, void *context) {
