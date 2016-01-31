@@ -22,7 +22,7 @@ static void select_click_handler(ClickRecognizerRef recognizer, void *context) {
 }
 
 static void down_click_handler(ClickRecognizerRef recognizer, void *context) {
-  show_directions_window(RESOURCE_ID_DIRECTIONS_TURN_SLIGHTLY_RIGHT, 200, "Via della Valéta");
+  show_directions_window(RESOURCE_ID_TURN_SLIGHTLY_RIGHT_INSTRUCTION, 200, "Via della Valéta");
 }
 
 static void up_click_handler(ClickRecognizerRef recognizer, void *context) {
