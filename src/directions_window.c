@@ -86,9 +86,9 @@ void show_directions_window(uint32_t graphics_resource_id, uint16_t distance, co
   window_set_window_handlers(s_window, (WindowHandlers) {
     .unload = handle_window_unload,
   });
-  window_stack_push(s_window, true);
+  window_stack_push(s_window, false);
 }
 
 void hide_directions_window(void) {
-  window_stack_remove(s_window, true);
+  window_stack_remove(s_window, false);
 }

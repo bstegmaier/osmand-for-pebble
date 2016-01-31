@@ -104,9 +104,9 @@ void show_navigation_info_window(const char *destination, uint32_t distance, tim
   window_set_window_handlers(s_window, (WindowHandlers) {
     .unload = handle_window_unload,
   });
-  window_stack_push(s_window, true);
+  window_stack_push(s_window, false);
 }
 
 void hide_navigation_info_window(void) {
-  window_stack_remove(s_window, true);
+  window_stack_remove(s_window, false);
 }

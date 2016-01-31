@@ -65,9 +65,9 @@ void show_alert_window(uint32_t resource_id, const char *text) {
   window_set_window_handlers(s_window, (WindowHandlers) {
     .unload = handle_window_unload,
   });
-  window_stack_push(s_window, true);
+  window_stack_push(s_window, false);
 }
 
 void hide_alert_window(void) {
-  window_stack_remove(s_window, true);
+  window_stack_remove(s_window, false);
 }
