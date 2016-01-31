@@ -1,5 +1,5 @@
 #include <pebble.h>
-#include "directions_window.h"
+#include "instruction_window.h"
 
 static Window *s_window;
 static Layer *s_canvas_layer;
@@ -78,7 +78,7 @@ static void handle_window_unload(Window* window) {
   destroy_ui();
 }
 
-void show_directions_window(uint32_t graphics_resource_id, uint16_t distance, const char *street_desc) {
+void show_instruction_window(uint32_t graphics_resource_id, uint16_t distance, const char *street_desc) {
   initialise_ui();
   set_street(street_desc);
   set_distance(distance);
@@ -89,6 +89,6 @@ void show_directions_window(uint32_t graphics_resource_id, uint16_t distance, co
   window_stack_push(s_window, false);
 }
 
-void hide_directions_window(void) {
+void hide_instruction_window(void) {
   window_stack_remove(s_window, false);
 }

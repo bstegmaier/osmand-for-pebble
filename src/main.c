@@ -1,6 +1,6 @@
 #include <pebble.h>
 #include "alert_window.h"
-#include "directions_window.h"
+#include "instruction_window.h"
 #include "navigation_info_window.h"
 #include "constants.h"
 
@@ -22,7 +22,7 @@ static void select_click_handler(ClickRecognizerRef recognizer, void *context) {
 }
 
 static void down_click_handler(ClickRecognizerRef recognizer, void *context) {
-  show_directions_window(RESOURCE_ID_TURN_SLIGHTLY_RIGHT_INSTRUCTION, 200, "Via della Valéta");
+  show_instruction_window(RESOURCE_ID_TURN_SLIGHTLY_RIGHT_INSTRUCTION, 200, "Via della Valéta");
 }
 
 static void up_click_handler(ClickRecognizerRef recognizer, void *context) {
@@ -101,8 +101,8 @@ static void instruction_message_handler(DictionaryIterator *iterator, void *cont
       instruction_canvas_resource = RESOURCE_ID_TURN_SLIGHTLY_RIGHT_INSTRUCTION; break;
   }
   
-  hide_directions_window();
-  show_directions_window(instruction_canvas_resource, distance->value->uint16, text->value->cstring);
+  hide_instruction_window();
+  show_instruction_window(instruction_canvas_resource, distance->value->uint16, text->value->cstring);
   
   #ifdef CONFIG_VIBRATE_ON_MESSAGE
     vibes_short_pulse();
