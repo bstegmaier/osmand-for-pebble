@@ -8,17 +8,8 @@ static Window *s_main_window;
 static StatusBarLayer *s_statusbar_layer;
 static TextLayer *s_status_layer;
 
-static void notes() {
-  // backlight
-  light_enable_interaction();
-
-  // vibration
-  // https://developer.getpebble.com/docs/c/User_Interface/Vibes/
-}
-
-
 static void select_click_handler(ClickRecognizerRef recognizer, void *context) {
-  show_alert_window(RESOURCE_ID_ALERT_GENERIC, "GENERIC DEMO WARNING MESSAGE");  
+  show_alert_window(RESOURCE_ID_ALERT_GENERIC, "GENERIC DEMO WARNING MESSAGE");
 }
 
 static void down_click_handler(ClickRecognizerRef recognizer, void *context) {
@@ -41,11 +32,11 @@ static void alert_message_handler(DictionaryIterator *iterator, void *context) {
 
   hide_alert_window();
   show_alert_window(alert_type->value->int16, alert_text->value->cstring);
-  
+
   #ifdef CONFIG_VIBRATE_ON_MESSAGE
     vibes_short_pulse();
   #endif
-  
+
   #ifdef CONFIG_BACKLIGHT_ON_MESSAGE
     light_enable_interaction();
   #endif
@@ -64,11 +55,11 @@ static void navigation_info_message_handler(DictionaryIterator *iterator, void *
 
   hide_navigation_info_window();
   show_navigation_info_window("Via della Valéta", 142, time(NULL));
-  
+
   #ifdef CONFIG_VIBRATE_ON_MESSAGE
     vibes_short_pulse();
   #endif
-  
+
   #ifdef CONFIG_BACKLIGHT_ON_MESSAGE
     light_enable_interaction();
   #endif
@@ -100,14 +91,14 @@ static void instruction_message_handler(DictionaryIterator *iterator, void *cont
     case TURN_SLIGHTLY_RIGHT_INSTRUCTION:
       instruction_canvas_resource = RESOURCE_ID_TURN_SLIGHTLY_RIGHT_INSTRUCTION; break;
   }
-  
+
   hide_instruction_window();
   show_instruction_window(instruction_canvas_resource, distance->value->uint16, text->value->cstring);
-  
+
   #ifdef CONFIG_VIBRATE_ON_MESSAGE
     vibes_short_pulse();
   #endif
-  
+
   #ifdef CONFIG_BACKLIGHT_ON_MESSAGE
     light_enable_interaction();
   #endif

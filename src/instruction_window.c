@@ -33,12 +33,12 @@ static void initialise_ui() {
   #ifndef PBL_SDK_3
     window_set_fullscreen(s_window, true);
   #endif
-  
+
   s_res_bitham_34_medium_numbers = fonts_get_system_font(FONT_KEY_BITHAM_34_MEDIUM_NUMBERS);
   s_res_gothic_28 = fonts_get_system_font(FONT_KEY_GOTHIC_28);
-  
+
   GRect bounds = layer_get_bounds((Layer *)s_window);
- 
+
   // s_distance_layer
   GRect distance_bounds = grect_inset(
     GRect(bounds.size.w/2, (bounds.size.h*2)/6, bounds.size.w/2, (bounds.size.h*2)/6),
@@ -49,7 +49,7 @@ static void initialise_ui() {
   text_layer_set_font(s_distance_layer, s_res_bitham_34_medium_numbers);
   text_layer_set_text_alignment(s_distance_layer, GTextAlignmentRight);
   layer_add_child(window_get_root_layer(s_window), (Layer *)s_distance_layer);
-  
+
   // s_street_desc_layer
   GRect street_desc_bounds = grect_inset(
     GRect(0, (bounds.size.h*2)/3, bounds.size.w, bounds.size.h/3),
@@ -60,7 +60,7 @@ static void initialise_ui() {
   text_layer_set_font(s_street_desc_layer, s_res_gothic_28);
   text_layer_set_text_alignment(s_street_desc_layer, GTextAlignmentCenter);
   layer_add_child(window_get_root_layer(s_window), (Layer *)s_street_desc_layer);
-  
+
   // s_canvas_layer
   s_canvas_layer = layer_create(GRect(0, 0, bounds.size.w/2, (bounds.size.h*2)/3));
   layer_set_update_proc(s_canvas_layer, canvas_update_proc);

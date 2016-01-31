@@ -15,11 +15,11 @@ static void initialise_ui(uint32_t resource_id, const char *text) {
     window_set_fullscreen(s_window, 0);
   #endif
   window_set_background_color(s_window, PBL_IF_COLOR_ELSE(GColorYellow, GColorWhite));
-  
+
   s_res_gothic_28_bold = fonts_get_system_font(FONT_KEY_GOTHIC_28_BOLD);
-  
+
   GRect bounds = layer_get_bounds((Layer *)s_window);
-  
+
   // s_icon_layer
   s_icon_bitmap = gbitmap_create_with_resource(resource_id);
   if (!s_icon_bitmap) {
@@ -36,7 +36,7 @@ static void initialise_ui(uint32_t resource_id, const char *text) {
   bitmap_layer_set_bitmap(s_icon_layer, s_icon_bitmap);
   bitmap_layer_set_compositing_mode(s_icon_layer, GCompOpSet); // for transparency
   layer_add_child(window_get_root_layer(s_window), (Layer *)s_icon_layer);
-  
+
   // s_text_layer
   GRect text_bounds = grect_inset(
     GRect(0, icon_bounds.origin.y + icon_bounds.size.h, bounds.size.w, bounds.size.h - (icon_bounds.origin.y + icon_bounds.size.h)),
