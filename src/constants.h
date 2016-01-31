@@ -32,3 +32,14 @@
 #define TURN_SHARPLY_RIGHT_INSTRUCTION 307
 #define TURN_SLIGHTLY_LEFT_INSTRUCTION 308
 #define TURN_SLIGHTLY_RIGHT_INSTRUCTION 309
+#define MAKE_UTURN_LEFT_INSTRUCTION 310
+#define MAKE_UTURN_RIGHT_INSTRUCTION 311
+#define EXIT_ROUNDABOUT_INSTRUCTION 312
+
+/*** TODO
+ * arrive at destination/waypoint
+ * nearby poi/favourite/..
+ * off route / back on route
+ * gps signal lost/recovered
+ * phone battery low
+*/

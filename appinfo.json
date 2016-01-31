@@ -59,6 +59,18 @@
                 "type": "raw"
             },
             {
+                "file": "data/instruction_make_uturn_left.pdc",
+                "name": "MAKE_UTURN_LEFT_INSTRUCTION",
+                "targetPlatforms": null,
+                "type": "raw"
+            },
+            {
+                "file": "data/instruction_make_uturn_right.pdc",
+                "name": "MAKE_UTURN_RIGHT_INSTRUCTION",
+                "targetPlatforms": null,
+                "type": "raw"
+            },
+            {
                 "file": "data/instruction_keep_right.pdc",
                 "name": "KEEP_RIGHT_INSTRUCTION",
                 "targetPlatforms": null,
@@ -73,6 +85,12 @@
             {
                 "file": "data/instruction_go_straight.pdc",
                 "name": "GO_STRAIGHT_INSTRUCTION",
+                "targetPlatforms": null,
+                "type": "raw"
+            },
+            {
+                "file": "data/instruction_exit_roundabout.pdc",
+                "name": "EXIT_ROUNDABOUT_INSTRUCTION",
                 "targetPlatforms": null,
                 "type": "raw"
             }

@@ -90,6 +90,12 @@ static void instruction_message_handler(DictionaryIterator *iterator, void *cont
       instruction_canvas_resource = RESOURCE_ID_TURN_SLIGHTLY_LEFT_INSTRUCTION; break;
     case TURN_SLIGHTLY_RIGHT_INSTRUCTION:
       instruction_canvas_resource = RESOURCE_ID_TURN_SLIGHTLY_RIGHT_INSTRUCTION; break;
+    case MAKE_UTURN_LEFT_INSTRUCTION:
+      instruction_canvas_resource = RESOURCE_ID_MAKE_UTURN_LEFT_INSTRUCTION; break;
+    case MAKE_UTURN_RIGHT_INSTRUCTION:
+      instruction_canvas_resource = RESOURCE_ID_MAKE_UTURN_RIGHT_INSTRUCTION; break;
+    case EXIT_ROUNDABOUT_INSTRUCTION:
+      instruction_canvas_resource = RESOURCE_ID_EXIT_ROUNDABOUT_INSTRUCTION; break;
   }
 
   hide_instruction_window();
