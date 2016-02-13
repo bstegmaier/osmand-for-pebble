@@ -5,7 +5,7 @@
     ],
     "companyName": "pebble@bstegmaier.de",
     "enableMultiJS": false,
-    "longName": "OsmAndPebble",
+    "longName": "OsmAnd for Pebble",
     "projectType": "native",
     "resources": {
         "media": [
@@ -98,7 +98,7 @@
         ]
     },
     "sdkVersion": "3",
-    "shortName": "OsmAndPebble",
+    "shortName": "OsmAnd",
     "targetPlatforms": [
         "aplite",
         "basalt",
