@@ -4,6 +4,7 @@
         ""
     ],
     "companyName": "pebble@bstegmaier.de",
+    "enableMultiJS": false,
     "longName": "OsmAndPebble",
     "projectType": "native",
     "resources": {
@@ -59,14 +60,14 @@
                 "type": "raw"
             },
             {
-                "file": "data/instruction_make_uturn_left.pdc",
-                "name": "MAKE_UTURN_LEFT_INSTRUCTION",
+                "file": "data/instruction_make_uturn_right.pdc",
+                "name": "MAKE_UTURN_RIGHT_INSTRUCTION",
                 "targetPlatforms": null,
                 "type": "raw"
             },
             {
-                "file": "data/instruction_make_uturn_right.pdc",
-                "name": "MAKE_UTURN_RIGHT_INSTRUCTION",
+                "file": "data/instruction_make_uturn_left.pdc",
+                "name": "MAKE_UTURN_LEFT_INSTRUCTION",
                 "targetPlatforms": null,
                 "type": "raw"
             },
